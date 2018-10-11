@@ -27,9 +27,9 @@ public class GameView extends View {
 
     private static final String TAG = "GameView";
 
-    private int mDurationMove = 180;         //“移动”动画持续时间
-    private int mDurationMerge = 160;        //“合并”动画持续时间
-    private int mDurationNew = 200;          //“生成”动画持续时间
+    private final int DURATION_MOVE = 180;         //“移动”动画持续时间
+    private final int DURATION_MERGE = 160;        //“合并”动画持续时间
+    private final int DURATION_NEW = 200;          //“生成”动画持续时间
     private int mTouchSlop;
 
     private DataHelper mDataHelper;                     //实际数据辅助类对象
@@ -97,8 +97,8 @@ public class GameView extends View {
             @Override
             public void onComplete() {
                 //移动动画完毕开启增加新砖块动画
-                mNewScroller.startScroll(mDurationNew);
-                mMergeScroller.startScroll(mDurationMerge);
+                mNewScroller.startScroll(DURATION_NEW);
+                mMergeScroller.startScroll(DURATION_MERGE);
             }
         });
 
@@ -116,7 +116,7 @@ public class GameView extends View {
         mDataHelper.putTwoNewTile();
         save();
         mMoveScorller.abortAnimation();
-        mNewScroller.startScroll(mDurationNew);
+        mNewScroller.startScroll(DURATION_NEW);
         invalidate();
     }
 
@@ -187,7 +187,7 @@ public class GameView extends View {
 //            mNewPoints.add(mDataHelper.createNewTile());
             mDataHelper.putOneNewTile();
             //要先启动动画，因为下面的回调可能会取消动画
-            mMoveScorller.startScroll(mDurationMove);
+            mMoveScorller.startScroll(DURATION_MOVE);
             if (mOnStepListener != null) {
                 mOnStepListener.onStepOver(mDataHelper.stepScore, mDataHelper.stepMax);
             }
@@ -296,12 +296,12 @@ public class GameView extends View {
                             mSideWidth + tHeight * (i + 1) + mGap * i);
                     if (merging) {                                          //是否正在进行合并动画
                         if (mDataHelper.needMerge(i, j)) {                            //当前位置是否需要合并
-                            float y;
-                            if (mMergeScroller.getTimeFraction() < 0.5) {
-                                y = -2 * mMergeScroller.getTimeFraction() + 1;
-                            } else {
-                                y = 2 * mMergeScroller.getTimeFraction() - 1;
-                            }
+//                            float y;
+//                            if (mMergeScroller.getTimeFraction() < 0.5) {
+//                                y = -2 * mMergeScroller.getTimeFraction() + 1;
+//                            } else {
+//                                y = 2 * mMergeScroller.getTimeFraction() - 1;
+//                            }
                             tileRec.inset(-12 * mMergeScroller.getTimeFraction(), -12 * mMergeScroller.getTimeFraction());
                         }
                     }
@@ -458,8 +458,8 @@ public class GameView extends View {
         private int mTiles[][], mTemp[][];          //瓷砖数组（滑动后即时修改） 和 临时数组（保存旧值用于“移动”动画，因为动画不能即时变化）
         private int mOffsets[][];                   //位移数组（用于“移动”动画，要“移动”多少个单位）
         private boolean mMerged[][];                //合并数组（用于“合并”动画，该位置是否需要进行合并动画）
-        private int stepScore, stepMax;             //每走一步的成绩，最大值
-        private List<Point> mNewPoints;             //保存每次需要新生成砖块的位置，因为第一次游戏和重新游戏需要生成两个砖块，故用列表
+        private int stepScore, stepMax;             //每走一步的成绩，瓷砖最大值（用来判断是否达到了2048）
+        private List<Point> mNewPoints;             //保存每次需要新生成瓷砖的位置，因为第一次游戏和重新游戏需要生成两个砖块，故用列表
 
         public DataHelper() {
             mNewPoints = new ArrayList<>();
