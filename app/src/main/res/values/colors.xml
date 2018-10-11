@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#d4cbba</color>
+    <color name="colorPrimaryDark">#c0ac88</color>
+    <color name="colorAccent">#a2bbe3</color>
+    <color name="colorForTest">#c71a57</color>
+
+    <color name="colorTextWhite">#f9f6f2</color>
+    <color name="colorMainBg">#d4cbba</color>
+
+    <color name="colorMaxScore">#dba66c</color>
+    <color name="colorScore">#d37777</color>
+    <color name="colorRestart">#6eb499</color>
+    <color name="colorRestartPressed">#cbc16b</color>
+
+    <color name="colorGameOverlay">#b1d0c6ab</color>
+    <color name="colorRoundBorder1">#c87210c7</color>
+    <color name="colorRoundBorder2">#df166bae</color>
+    <color name="colorSelect1">#def41a66</color>
+    <color name="colorSelect2">#e9e38634</color>
+</resources>
