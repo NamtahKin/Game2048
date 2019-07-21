@@ -1,1 +1,1 @@
-源代码请参照 [这里](https://github.com/NamtahKin/Game2048/blob/master/app/src/main/java/com/namtah/game2048/widget/GameView.java) 。
+源代码请参照 [这里](https://github.com/namtah/Game2048/blob/master/app/src/main/java/com/namtah/game2048/widget/GameView.java) 。
